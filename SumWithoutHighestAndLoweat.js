@@ -1,9 +1,9 @@
 //# Task 3
-/*
-function sumArray(array){
+
+function sumArray1(array){
 //1
-  if (array.lengtht===0 || array.length===1) {
-    return "null";
+  if (array.length===0 || array.length===1) {
+    return 0;
   }
 //2
   let highest=Math.max(...array);
@@ -21,23 +21,49 @@ function sumArray(array){
           return arraySumation;
 }
 
-console.log(sumArray([2,9,5,1,11,5]));//2
-console.log(sumArray([6]));//null
-*/
-
+//test
+console.log(sumArray1([2,9,5,1,11,5]));//2
+console.log(sumArray1([6]));//null
 
 
 ////////////////////////
 
+
 // another solution
 
-function sumArray(array){
-  if (array.lengtht===0 || array.length===1) {
-    return "null";
+function sumArray2(array){
+  if (array.length===0 || array.length===1) {
+    return 0;
   }
  return array.filter((i)=>i!==Math.max(...array) && i!== Math.min(...array)).reduce((acc,current)=>acc+current,0);
  return array;
 }
 
-console.log(sumArray([2,9,5,1,11]));//2
-console.log(sumArray([6]));//null
+console.log(sumArray2([2,9,5,1,11]));//2
+console.log(sumArray2([6]));//null
+
+
+////////////////////////
+
+function sumArray3(array){
+ //1
+ if (array.lengtht===0 || array.length===1) {
+    return 0;
+  }
+//2,3,3
+return array.sort((x,y)=>y-x).slice(1,-1).reduce((acc,curr)=>acc+curr ,0);
+ return array;
+}
+//rest
+console.log(sumArray3([1,3,4,2,5,5]));//2
+console.log(sumArray3([6]));//null
+
+//The right solutiin
+
+function sumArray4(array){
+   return  (array==null) ?0
+   :array.sort((x,y)=>y-x).slice(1,-1).reduce((acc,curr)=>acc+curr ,0);
+   return array;
+  }
+//test
+ console.log(sumArray4([1,3,4,2,5,5]));
